@@ -1,0 +1,185 @@
+﻿<Window x:Class="PerceptualPegSolitaire.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:native="clr-namespace:PerceptualPegSolitaire"
+        Title="Perceptual PegSolitaire"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowActivated="True"
+        FontFamily="Verdana"
+        FontSize="14"
+        Width="900"
+        Height="900"
+        Background="#444444"
+        Icon="Images/Logo.ico">
+
+    <!--
+    <Window.Background>
+        <ImageBrush ImageSource="Images/tile.png"
+                    TileMode="Tile"
+                    ViewportUnits="Absolute" />
+    </Window.Background>
+    -->
+
+    <Grid>
+        <Grid Width="860"
+              ShowGridLines="False"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <!-- Row1 -->
+            <Grid>
+                <Image Source="Images/title.png"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Visibility="Collapsed"
+                       Width="580"
+                       Height="60" />
+                <TextBlock x:Name="TitleTextBlock"
+                           Text="PERCEPTUAL PEG-SOLITAIRE"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="36"
+                           FontWeight="Bold"
+                           Foreground="BurlyWood" />
+                <Image x:Name="CloseImage"
+                       Source="Images/close.png"
+                       Stretch="Fill"
+                       Visibility="Visible"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Width="80"
+                       Height="80"
+                       Cursor="Hand"
+                       Margin="20,0,0,0"
+                       Opacity="0.8"
+                       MouseDown="CloseImage_MouseDown" />
+                <Image x:Name="AboutImage"
+                       Source="Images/info.png"
+                       Stretch="Fill"
+                       Visibility="Visible"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Width="74"
+                       Height="72"
+                       Cursor="Hand"
+                       Margin="0,0,20,0"
+                       Opacity="0.8"
+                       MouseDown="AboutImage_MouseDown" />
+                <Image x:Name="BackImage"
+                       Source="Images/back.png"
+                       Stretch="Fill"
+                       Visibility="Hidden"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Width="90"
+                       Height="80"
+                       Cursor="Hand"
+                       Margin="20,0,0,0"
+                       MouseDown="BackImage_MouseDown" />
+                <Image x:Name="RefreshImage"
+                       Source="Images/refresh.png"
+                       Stretch="Fill"
+                       Visibility="Hidden"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       Width="80"
+                       Height="80"
+                       Cursor="Hand"
+                       Margin="0,0,20,0"
+                       Opacity="0.8"
+                       ToolTip="Reload"
+                       MouseDown="RefreshImage_MouseDown" />
+            </Grid>
+
+            <!-- Row2 -->
+            <Grid x:Name="LevelsContainer"
+                  Grid.Row="1"
+                  Visibility="Visible"
+                  Height="800">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/boardPanel.png"
+                                Stretch="Fill" />
+                </Grid.Background>
+
+                <ContentControl x:Name="LevelPlaceholder"
+                                Margin="16">
+                </ContentControl>
+                <!--
+                <native:LevelSelect x:Name="LevelSelectControl"
+                                    Margin="16">
+                </native:LevelSelect>
+                -->
+            </Grid>
+
+            <Grid x:Name="BoardContainer"
+                  Grid.Row="1"
+                  Visibility="Hidden"
+                  Height="800"
+                  RenderTransformOrigin="0.5,0.5"
+                  MouseDown="BoardContainer_MouseDown"
+                  MouseMove="BoardContainer_MouseMove"
+                  MouseUp="BoardContainer_MouseUp">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Images/board.png"
+                                Stretch="Fill" />
+                </Grid.Background>
+
+                <ContentControl x:Name="BoardPlaceholder"
+                                Margin="60">
+                </ContentControl>
+                <!--
+                <native:PegSolitaire x:Name="Board"
+                                   Margin="60">
+                </native:PegSolitaire>
+                -->
+            </Grid>
+
+            <Grid x:Name="CanvasContainer"
+                  Grid.Row="1"
+                  Height="800">
+                <Border BorderBrush="Transparent"
+                        BorderThickness="0">
+                    <Canvas x:Name="BoardCanvas"
+                            Background="Transparent"
+                            IsHitTestVisible="False"
+                            Margin="60">
+                        <Image x:Name="HandImage"
+                               Visibility="Hidden"
+                               Source="Images/hand2.png"
+                               Canvas.Left="0"
+                               Canvas.Top="0"
+                               Stretch="None" />
+                        <Ellipse x:Name="HandPointer"
+                                 Visibility="Hidden"
+                                 Fill="Black"
+                                 Canvas.Left="0"
+                                 Canvas.Top="0"
+                                 Width="80"
+                                 Height="80"
+                                 Margin="24,-30,0,0"
+                                 Opacity="0.2" />
+                    </Canvas>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <ScrollViewer Background="Gray"
+                      Width="300"
+                      Visibility="Hidden"
+                      HorizontalAlignment="Right"
+                      CanContentScroll="True"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:Name="LogContainer"
+                       Orientation="Horizontal" />
+        </ScrollViewer>
+    </Grid>
+</Window>

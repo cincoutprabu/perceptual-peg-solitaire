@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="PerceptualPegSolitaire.LevelSelect"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:native="clr-namespace:PerceptualPegSolitaire"
+             FontFamily="Impact"
+             FontSize="24">
+
+    <UserControl.Resources>
+        <native:BoolToVisConverter x:Key="BoolToVisConverter" />
+
+        <DataTemplate x:Key="LevelTemplate">
+            <Grid x:Name="LevelGrid"
+                  Cursor="Hand"
+                  IsHitTestVisible="True"
+                  Loaded="LevelGrid_Loaded"
+                  MouseEnter="LevelGrid_MouseEnter"
+                  MouseLeave="LevelGrid_MouseLeave"
+                  MouseDown="LevelGrid_MouseDown"
+                  Margin="12">
+                <Border BorderBrush="Transparent"
+                        CornerRadius="12"
+                        BorderThickness="2"
+                        Background="Chocolate"
+                        Opacity="0.3">
+                </Border>
+                <Border x:Name="LevelBorder"
+                        BorderBrush="Chocolate"
+                        CornerRadius="12"
+                        BorderThickness="2"
+                        Background="Transparent">
+                    <Grid Width="220"
+                          Height="190"
+                          ShowGridLines="False">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Margin="4">
+                            <TextBlock Text="{Binding Number}"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Verdana"
+                                       FontWeight="Bold"
+                                       FontSize="36"
+                                       Foreground="BurlyWood" />
+                            <TextBlock Text="{Binding Name}"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Verdana"
+                                       FontSize="20"
+                                       Foreground="BurlyWood"
+                                       Margin="8,0,0,0" />
+                        </StackPanel>
+
+                        <Image Grid.Row="1"
+                               Source="{Binding ImagePath}"
+                               Width="80"
+                               Stretch="Uniform">
+                        </Image>
+
+                        <StackPanel Grid.Row="2"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Visibility="{Binding TaglineVisible, Converter={StaticResource BoolToVisConverter}}"
+                                    Margin="4">
+                            <TextBlock Text="Best:"
+                                       FontFamily="Calibri"
+                                       Foreground="Gray" />
+                            <TextBlock Text="{Binding BestPebbleCount}"
+                                       FontFamily="Calibri"
+                                       Foreground="Gray"
+                                       Margin="8,0,0,0" />
+                            <TextBlock Text="pebbles"
+                                       FontFamily="Calibri"
+                                       Foreground="Gray"
+                                       Margin="8,0,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border BorderBrush="Transparent"
+                        CornerRadius="12"
+                        BorderThickness="2"
+                        Background="Chocolate"
+                        Visibility="{Binding Unlocked, Converter={StaticResource BoolToVisConverter}, ConverterParameter='invert'}"
+                        Opacity="0.5">
+                </Border>
+                <Image Source="Images/lock.png"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Bottom"
+                       Width="48"
+                       Height="48"
+                       Stretch="Uniform"
+                       Margin="0,0,8,12"
+                       Opacity="0.6"
+                       Visibility="{Binding Unlocked, Converter={StaticResource BoolToVisConverter}, ConverterParameter='invert'}" />
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Margin="2"
+          ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Choose a Level"
+                       FontSize="48"
+                       Foreground="Gray"
+                       Margin="0,12,0,4" />
+        </StackPanel>
+
+        <ItemsControl x:Name="LevelsControl"
+                      Grid.Row="1"
+                      ItemsSource="{Binding Levels}"
+                      ItemTemplate="{StaticResource LevelTemplate}"
+                      Margin="40,4,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
+    </Grid>
+</UserControl>

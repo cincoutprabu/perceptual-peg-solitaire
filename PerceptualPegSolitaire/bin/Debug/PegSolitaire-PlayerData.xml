@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<Player>
+  <Level Number="1" Name="Island" Unlocked="True" Best="0" />
+  <Level Number="2" Name="Box" Unlocked="False" Best="0" />
+  <Level Number="3" Name="Cross" Unlocked="False" Best="0" />
+  <Level Number="4" Name="Arrow" Unlocked="False" Best="0" />
+  <Level Number="5" Name="Tree" Unlocked="False" Best="0" />
+  <Level Number="6" Name="Home" Unlocked="False" Best="0" />
+  <Level Number="7" Name="Circle" Unlocked="False" Best="0" />
+  <Level Number="8" Name="Checkers" Unlocked="False" Best="0" />
+  <Level Number="9" Name="Solitaire" Unlocked="False" Best="0" />
+</Player>

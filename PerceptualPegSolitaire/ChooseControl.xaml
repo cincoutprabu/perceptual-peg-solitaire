@@ -1,0 +1,88 @@
+﻿<Window x:Class="PerceptualPegSolitaire.ChooseControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Perceptual PegSolitaire"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        ShowActivated="True"
+        FontFamily="Verdana"
+        FontSize="14"
+        Width="900"
+        Height="900"
+        Background="#444444"
+        Icon="Images/Logo.ico">
+
+    <Grid>
+        <Grid Width="Auto"
+              Height="Auto"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.ColumnSpan="2"
+                        Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Choose a Gesture"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontFamily="Impact"
+                           FontSize="48"
+                           Foreground="Gray"
+                           Margin="0,12,0,4" />
+                <TextBlock Text="(for controlling pebbles)"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="20"
+                           Foreground="Gray"
+                           Margin="0,0,0,8" />
+            </StackPanel>
+
+            <Border x:Name="ClosedHandContainer"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    BorderBrush="Chocolate"
+                    BorderThickness="2"
+                    Background="Transparent"
+                    CornerRadius="16"
+                    Margin="20"
+                    Cursor="Hand"
+                    MouseDown="ClosedHandContainer_MouseDown">
+                <Image Source="Images/closedHand.png"
+                       Width="140"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="10" />
+            </Border>
+
+            <Border x:Name="ThumbUpContainer"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    BorderBrush="Chocolate"
+                    BorderThickness="2"
+                    Background="Transparent"
+                    CornerRadius="16"
+                    Margin="20"
+                    Cursor="Hand"
+                    MouseDown="ThumbUpContainer_MouseDown">
+                <Image Source="Images/thumbUp.png"
+                       Width="140"
+                       Stretch="Uniform"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="10" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

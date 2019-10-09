@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="PerceptualPegSolitaire.PegSolitaire"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <UserControl.Resources>
+        <Style x:Key="PebbleButtonStyle"
+               TargetType="{x:Type Button}"
+               BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid x:Name="BoardGrid"
+              ShowGridLines="False"
+              Grid.Row="0"
+              Grid.Column="0"
+              Margin="8, 8, 8, 8">
+        </Grid>
+
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Margin="0,20,20,0">
+            <Image x:Name="UndoImage"
+                   Source="Images/undo.png"
+                   Visibility="Hidden"
+                   Width="60"
+                   Stretch="Uniform"
+                   Cursor="Hand"
+                   ToolTip="Undo"
+                   MouseDown="UndoImage_MouseDown" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="20,0,0,20">
+            <TextBlock x:Name="LevelTextBlock"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       IsHitTestVisible="False"
+                       Foreground="Brown"
+                       FontFamily="Impact"
+                       FontSize="60" />
+            <TextBlock Text="Level"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       IsHitTestVisible="False"
+                       Foreground="Brown"
+                       FontSize="16" />
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,20,20">
+            <TextBlock x:Name="RemainingPebblesTextBlock"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       IsHitTestVisible="False"
+                       Foreground="Brown"
+                       FontFamily="Impact"
+                       FontSize="60" />
+            <TextBlock Text="Remaining"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       IsHitTestVisible="False"
+                       Foreground="Brown"
+                       FontSize="16" />
+        </StackPanel>
+    </Grid>
+</UserControl>

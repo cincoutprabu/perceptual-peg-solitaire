@@ -1,0 +1,8 @@
+﻿<Application x:Class="PerceptualPegSolitaire.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="ChooseAudioDevice.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
